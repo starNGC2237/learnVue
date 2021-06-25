@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item, index) in movies" :key="index">{{item}}</li>
+    </ul>
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.config.devtools = true;
+    const vm=new Vue({
+        el:'#app',
+        data:{
+            movies:["时间发","单身狗法师","dsffsdfd"]
+        },
+        methods:{
+            
+        }
+    })
+</script>
+</html>
