@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
     <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div id="app">{{msg}}     +{{msg2}}</div>
+<div id="app">
+    <ul>
+        <li @click="tem=index" v-for="(item, index) in movies"  :class="{'red' : tem==index}">{{item}}</li>
+    </ul>
+</div>
 </body>
 <script src="vue.js"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
-            msg:"msg",
-            msg2:"msg2"
+            tem:0,
+            movies:["海王","2","3","4"]
         },
         methods:{
-            
         }
     })
 </script>

@@ -7,16 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">{{msg}}     +{{msg2}}</div>
+<div id="app">
+    <img :src="imgurl" alt="">
+    <a :href="a">asSDAta</a>
+</div>
 </body>
 <script src="vue.js"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
-            msg:"msg",
-            msg2:"msg2"
+            imgurl:"https://i0.hdslb.com/bfs/sycp/creative_img/202105/b921e4d4b0be3d476ccf4fd9fc76dede.jpg",
+            a:"HTTPS://127.0.0.1"
         },
         methods:{
             

@@ -7,16 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">{{msg}}     +{{msg2}}</div>
+<div id="app">
+    <div>{{msg}}</div>
+    <div v-once>{{msg}}</div>
+    <div v-html='href'></div>
+    <div v-text="msg"></div>
+    <div v-pre>{[msg}}</div>
+    <div v-cloak>{{msg}}</div>
+</div>
 </body>
 <script src="vue.js"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
             msg:"msg",
-            msg2:"msg2"
+            href:"<a href='https:www.baidu.com'>百度一下</a>"
         },
         methods:{
             
