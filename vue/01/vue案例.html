@@ -9,20 +9,27 @@
 <body>
 <div id="app">
     <p>{{numb}}</p>
-    <button @click=> + </button>
-    <button> - </button>
+    <!--<button v-on:click="numb++"> + </button>
+    <button v-on:click="numb--"> - </button>-->
+    <button v-on:click="add"> + </button>
+    <button v-on:click="numb--"> - </button>
 </div>
 </body>
 <script src="vue.js"></script>
 <script>
     Vue.config.devtools = true;
-    const vm=new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
             numb:0
         },
         methods:{
-            
+            add(){
+                this.numb++
+            },
+            de(){
+                this.numb--
+            }
         }
     })
 </script>

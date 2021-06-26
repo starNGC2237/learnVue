@@ -7,19 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">
-    <ul>
-        <li v-for="(item, index) in movies" :key="index">{{item}}</li>
-    </ul>
-</div>
+<div id="app"></div>
 </body>
 <script src="vue.js"></script>
 <script>
     Vue.config.devtools = true;
-    const app=new Vue({
+    const app = new Vue({
         el:'#app',
         data:{
-            movies:["时间发","单身狗法师","dsffsdfd"]
+            
         },
         methods:{
             
