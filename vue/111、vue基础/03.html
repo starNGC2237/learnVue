@@ -7,19 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">{{message}}</div>
+<div id="app">
+    单向<input type="text" :value="msg">
+    <!--v-model只能用于表单类-->
+    双向<input type="text" v-model:value="msg">
+</div>
 </body>
-<script src="vue.js"></script>
+<script src="https://unpkg.com/vue"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
-        el:'#app',
+    const app=new Vue({
+        //el:'#app',
         data:{
-           message:"hello，vuejs和nginx" 
+            msg:"行距使得就"
         },
         methods:{
             
         }
     })
+    app.$mount("#app");
 </script>
 </html>

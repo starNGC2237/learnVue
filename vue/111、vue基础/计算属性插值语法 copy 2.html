@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    姓<input type="text" v-model="xing">
+    名<input type="text" v-model="ming">
+    <span>{{fullName}}</span>
+</div>
+</body>
+<script src="https://unpkg.com/vue">
+</script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            xing:"张",
+            ming:"三"
+        },
+        //完整写法
+        /*
+        computed:{
+            fullName:{
+                get(){
+                    return this.xing+'-'+this.ming
+                },
+                set(value){
+                    const arr=value.split('-');
+                    this.xing=arr[0];
+                    this.ming=arr[1];
+                }
+            }
+        }
+        */
+       //简写：只有get
+        computed:{
+            fullName(){
+                return this.xing+'-'+this.ming
+            }
+        }
+    })
+</script>
+</html>

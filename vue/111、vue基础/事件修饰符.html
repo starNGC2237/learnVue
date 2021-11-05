@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+    <style>
+        li{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <!--prevent阻止默认事件-->
+    <a href="https://baidu.com" @click.prevent="aaa()">sssssssssssss</a>
+
+
+    <!--stop阻止冒泡-->
+    <!--stop添加在想要阻止其向上的html里-->
+    <div @click="bbb()" >
+        <button @click.stop="bbb()">
+            ssssss
+        </button>
+    </div>
+
+    <div @click="bbb()">
+        <a href="baidu.com" @click.stop.prevent="bbb()">aaaaaaaaaaaaaaa</a>
+    </div>
+
+    <!--once：事件只触发一次-->
+    <button @click.once="bbb"></button>
+
+
+    <!--capture：使用触发模式-->
+    <!--触发为1--》2-->
+    <!--冒泡为2--》1-->
+    <!--此处为1--》2,因为强制使用触发模式-->
+    <!--即点击里面的，从外面开始执行-->
+    <div @click.capture="ccc(1)">
+        <button @click="ccc(2)">
+            aaaaaaaaaaaaaaaaaaaa
+        </button>
+    </div>
+
+
+    <!--self只有target==自己时，其对应的click才会触发-->
+    <div @click.self="aaa()">
+        <button @click="bbb()">
+aaaaaaaaaaaaaaaaaa
+        </button>
+    </div>
+
+
+    <!--passive：其click不用等待回调就会立即执行默认事件-->
+    <ul @scroll.passive="ddd()" style="height: 200px;width: 200px;background-color: aqua;overflow: auto;">
+        <li>
+            1
+        </li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <!--wheel滚轮事件如果不加passive的话，会先等ddd()执行完毕-->
+    <!--加了就会动-->
+    <ul @wheel.passive="ddd()" style="height: 200px;width: 200px;background-color: aqua;overflow: auto;">
+        <li>
+            1
+        </li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            
+        },
+        methods:{
+            aaa(){
+                console.log("sandvshda")
+            },
+            bbb(){
+                alert("的顺丰快递防守打法")
+            },
+            ccc(number){
+                console.log(number);
+            },
+            ddd(){
+                for(let i=0;i<100000;i++){
+                    console.log("#");
+                }
+                console.log("sssssssssssss")
+            }
+        }
+    })
+</script>
+</html>

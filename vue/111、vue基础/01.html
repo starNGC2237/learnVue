@@ -7,15 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">{{message}}</div>
+<div id="app">
+    <h1>插值语法</h1>
+    <span>hello,{{name}}</span>
+    <a v-bind:href="url">aaaaaaaaaaa</a>
+</div>
 </body>
-<script src="vue.js"></script>
+<script src="https://unpkg.com/vue"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
-           message:"hello，vuejs和nginx" 
+            name:"jack",
+            url:"https://baidu.com"
         },
         methods:{
             

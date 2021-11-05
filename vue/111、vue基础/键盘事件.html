@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.ctrl="aaa">
+    <input type="text" @keyup.ctrl.y="aaa">
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<!--keyup-->
+<!--
+    1.enter
+    2.tab     tab配合keydown
+    3.space
+    4.esc
+    5.delete
+    6.up
+    7.down
+    8.left
+    9.right
+    其余使用e.key获取
+    注意：CapsLock之类的使用caps-lock
+
+    ctrl,alt,shift,meta keyup需要配合其他键使用
+    keydown正常
+
+
+    Vue.config.keyCode.自定义键名=键码   定制按键键名
+-->
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            
+        },
+        methods:{
+           aaa(e){
+               console.log(e.target.value)
+           } 
+        }
+    })
+</script>
+</html>

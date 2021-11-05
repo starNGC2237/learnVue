@@ -7,15 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">{{message}}</div>
+<div id="app">
+    <p>{{name}}</p>
+    <p>{{address}}</p>
+</div>
 </body>
-<script src="vue.js"></script>
+<script src="https://unpkg.com/vue"></script>
 <script>
     Vue.config.devtools = true;
-    const app = new Vue({
+    const app=new Vue({
         el:'#app',
         data:{
-           message:"hello，vuejs和nginx" 
+            name:"啊啊啊啊啊啊啊啊",
+            address:"阿深V按时返回vas"
         },
         methods:{
             
