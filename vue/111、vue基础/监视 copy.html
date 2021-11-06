@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <span>今天天气：{{weather}}</span>
+    <button @click='qhWeather()'>切换天气</button>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            isHot:true,
+        },
+        methods: {
+            qhWeather(){
+                this.isHot=!this.isHot;
+            }
+        },
+        computed:{
+            weather:{
+                get(){
+                   return this.isHot ? '炎热':'凉爽';
+                }
+            }
+        },
+         watch:{
+            isHot(newValue,oldValue){
+                //handler当isHot改变时调用
+                    console.log(newValue+'          '+oldValue)
+            }
+        }
+        /*
+        
+        app.$watch('isHot',{
+        immediate:true,
+        //handler当isHot改变时调用
+        handler(newValue,oldValue){
+            console.log(newValue+'          '+oldValue)
+        }
+    })
+        */
+       /*
+        
+        app.$watch('isHot',function(){
+            console.log(newValue+'          '+oldValue)
+        }
+    })
+        */
+    })
+    
+</script>
+</html>
