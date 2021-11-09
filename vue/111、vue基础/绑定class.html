@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+    <style>
+        .basic{
+            border: 1px solid  black;
+        }
+        .normal{
+            background-color: aqua;
+        }
+        .happy{
+            background-color: red;
+        }
+        .sad{
+            background-color: gray;
+        }
+        .arr1{
+            background-color: aqua;
+        }
+        .arr2{
+            border: 1px solid black;
+        }
+        .arr3{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div style="width: 500px;height: 500px;" class="basic" :class='mood'></div>
+
+    <div style="width: 500px;height: 500px;" class="basic" :class='arr'></div>
+
+    <button @click='changeMood'>改变</button>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            mood:'normal',
+            arr:['arr1','arr2','arr3']
+        },
+        methods: {
+            changeMood(){
+                //语句写法
+                //this.mood='happy'
+                //数组写法
+                const arr=['sad','happy','normal']
+                const index=Math.floor(Math.random()*3)
+                this.mood=arr[index]
+                arr.shift('arr3')
+            }
+        },
+    })
+</script>
+</html>

@@ -21,27 +21,25 @@
         el:'#app',
         data:{
             xing:"张",
-            ming:"三"
+            ming:"三",
+            fullName:"张-三"
         },
-        //完整写法
-        /*
         computed:{
-            fullName:{
-                get(){
-                    return this.xing+'-'+this.ming
-                },
-                set(value){
-                    const arr=value.split('-');
-                    this.xing=arr[0];
-                    this.ming=arr[1];
-                }
-            }
-        }
-        */
-       //简写：只有get
-        computed:{
-            fullName(){
-                return this.xing+'-'+this.ming
+            
+        },
+        watch:{
+            //watch相对于computed在于可以使用异步函数
+            xing(val){
+                setTimeout(() => {
+                  this.fullName=val+'-'+this.ming  
+                }, 1000);
+                
+            },
+            ming(val){
+                setTimeout(() => {
+                    this.fullName=this.xing+'-'+val
+                }, 1000);
+                
             }
         }
     })
