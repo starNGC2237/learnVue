@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!--v-for能遍历数组、对象、字符串、指定次数-->
+    <ul v-for="(p, index) in arr" :key="p.id">
+        <li>{{p.id}}-{{p.name}}-{{p.age}}</li>
+    </ul>
+    <ul v-for="(item, index) in car" :key="index">
+        <li>{{index}}-{{item}}</li>
+    </ul>
+    <ul v-for="(char, index) in str" :key="index">
+        <li>{{index}}-{{char}}</li>
+    </ul>
+    <ul v-for="(number, index) in 5" :key="index">
+        <li>{{index}}-{{number}}</li>
+    </ul>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            arr:[
+                {'id':'001','name':'张三','age':18},
+                {'id':'002','name':'啥目的是','age':21},
+                {'id':'003','name':'sad','age':14}
+                ],
+            car:{
+                'name':'奥迪',
+                'price':'60w'
+            },
+            str:'sadsadasasasdasdas'
+        },
+        methods:{
+            
+        }
+    })
+</script>
+</html>

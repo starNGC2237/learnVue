@@ -19,7 +19,7 @@
             background-color: gray;
         }
         .arr1{
-            background-color: aqua;
+            background-color: yellow;
         }
         .arr2{
             border: 1px solid black;
@@ -31,11 +31,17 @@
 </head>
 <body>
 <div id="app">
+    <!--字符串写法，适用于样式的类名不确定，需要动态指定-->
     <div style="width: 500px;height: 500px;" class="basic" :class='mood'></div>
-
+    <!--数组样式，适用于要绑定的样式个数不确定，名称也不确定-->
     <div style="width: 500px;height: 500px;" class="basic" :class='arr'></div>
-
-    <button @click='changeMood'>改变</button>
+    <!--对象写法，适用于名字确定，但不确定用不用-->
+    <div style="width: 500px;height: 500px;" class="basic" :class='classObj'></div>
+    <!--style对象写法-->
+    <div style="width: 500px;height: 500px;" class="basic" :style='styleObj'>啥的跟你说的</div>
+    <!--style数组写法-->
+    <div style="width: 500px;height: 500px;" class="basic" :style='classArr'>sadasdasa</div>
+    <button @click='changeMood' >改变</button>
 </div>
 </body>
 <script src="https://unpkg.com/vue"></script>
@@ -45,7 +51,25 @@
         el:'#app',
         data:{
             mood:'normal',
-            arr:['arr1','arr2','arr3']
+            arr:['arr1','arr2','arr3'],
+            classObj:{
+                arr1:true,
+                arr2:true,
+                arr3:true
+            },
+            styleObj:{
+                fontSize:'18px',
+                color:'blue'
+            },
+            classArr:[
+                {
+                    fontSize:'18px',
+                    color:'white'
+                },
+                {
+                    backgroundColor:'blue'
+                }
+            ]
         },
         methods: {
             changeMood(){

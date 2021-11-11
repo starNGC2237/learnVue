@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!--v-if是没有dom的-->
+    <!--v-show是display:none-->
+    <!--还可以使用v-else-if-->
+    <!--但是if与else之间不能有dom-->
+    <div v-show="false">欢迎来到{{name}}</div>
+    <div v-show="1==1">欢迎来到{{name}}</div>
+    <div v-if="false"></div>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            name:'啊实打实大'
+        },
+        methods:{
+            
+        }
+    })
+</script>
+</html>

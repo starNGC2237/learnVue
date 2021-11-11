@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <img src="../img/index.jpg" alt="">
+    <img src="../img/key.jpg" alt="">
+    <button @click='add'>添加一个老刘</button>
+    <ul v-for="(p, index) in persons" :key="index">
+        <li>{{p.id}}-{{p.name}}
+            <input type="text">
+        </li>
+    </ul>
+    <p>-----------------------------------------------</p>
+    <ul v-for="(p, index) in persons" :key="p.id">
+        <li>{{p.id}}-{{p.name}}
+            <input type="text" >
+        </li>
+    </ul>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            persons:[
+                {'id':'001','name':'老张'},
+                {'id':'002','name':'老王'},
+                {'id':'003','name':'老李'}
+            ]
+        },
+        methods:{
+            add(){
+                const p={'id':'004','name':'老刘'}
+                this.persons.unshift(p)
+            }
+        }
+    })
+</script>
+</html>
