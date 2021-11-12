@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <button @click='addSex'>添加性别</button>
+    <p>{{student.name}}</p>
+    <p v-if="student.sex">{{student.sex}}</p>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    //此方法在vue3已废弃
+    //只能向对象里添加
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+           student:{
+               'name':'张三'
+           } 
+        },
+        methods:{
+           addSex(){
+               //Vue.set(this.student,'sex','男')
+               this.$set(this.student,'sex','男')
+           } 
+        }
+    })
+</script>
+</html>
