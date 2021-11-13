@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <button @click='add'>添加一个爱好</button>
+    <ul v-for="(p, index) in hobby" :key="index">
+        <li>{{p}}</li>
+    </ul>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        //push 往数组最后添一个
+        //pop 删除数组最后一个
+        //shift 删除数组第一个
+        //unshift 添加数组第一个
+        //splice 在数组的指定位置插入或替换
+        //sort 等数组排序
+        //reverse 反转数组
+        //添加或修改数组只能用这几个等。vue才更新
+        el:'#app',
+        data:{
+            hobby:['抽烟','喝酒','烫头']
+        },
+        methods:{
+            add(){
+                this.hobby.push('学习')
+            }
+        }
+        
+    })
+    app.hobby.shift()
+    app.$set(app.hobby,1,'打台球') 
+</script>
+</html>
