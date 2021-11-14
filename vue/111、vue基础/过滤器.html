@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div>{{thisTime}}</div>
+    <div>{{thisTimeM()}}</div>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.4.1/dayjs.min.js"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            thisTimeM(){
+               return dayjs().format("YYYY年MM月DD日 HH:mm:ss")
+            }
+        },
+        methods: {
+            
+        },
+        computed:{
+            thisTime(){
+               return dayjs().format("YYYY年MM月DD日 HH:mm:ss")
+            }
+        }
+    })
+</script>
+</html>
