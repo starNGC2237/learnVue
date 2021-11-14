@@ -8,28 +8,43 @@
 </head>
 <body>
 <div id="app">
+    <p>计算属性</p>
     <div>{{thisTime}}</div>
+    <p>方法计算</p>
     <div>{{thisTimeM()}}</div>
+    <p>过滤器</p>
+    <div>{{time | timeFilter('YYYY_MM_DD')}}</div>
+    <div>{{time | timeFilter('YYYY_MM_DD') | mySlice}}</div>
 </div>
 </body>
 <script src="https://unpkg.com/vue"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.4.1/dayjs.min.js"></script>
 <script>
     Vue.config.devtools = true;
+    //全局过滤器
+    Vue.filter('mySlice',function(value){
+        return value.slice(0,4)
+    })
     const app=new Vue({
         el:'#app',
         data:{
+            time:1636898130358
+        },
+        methods: {
             thisTimeM(){
                return dayjs().format("YYYY年MM月DD日 HH:mm:ss")
             }
-        },
-        methods: {
-            
         },
         computed:{
             thisTime(){
                return dayjs().format("YYYY年MM月DD日 HH:mm:ss")
             }
+        },
+        //局部过滤器
+        filters:{
+            timeFilter(value,str='YYYY年MM月DD日 HH:mm:ss'){
+                return dayjs(value).format(str)
+            },
         }
     })
 </script>
