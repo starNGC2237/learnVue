@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
     <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
-    <!--渲染文本内容-->
-    <div>{{name}}</div>
-    <div v-html="text"></div>
+
+    <!--v-cloak是披风,v-pre用于优化-->
+    <div v-pre v-cloak  v-once>{{n}}</div>
+    <div>{{n}}</div>
+    <button @click='n++'></button>
 </div>
 </body>
 <script src="https://unpkg.com/vue"></script>
@@ -19,8 +26,7 @@
     const app=new Vue({
         el:'#app',
         data:{
-            name:'撒地方是的',
-            text:'<h3>实打实的</h3>'
+            n:0
         },
         methods:{
             

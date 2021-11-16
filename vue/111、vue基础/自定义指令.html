@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div>{{n}}</div>
+    <span v-big='n'></span>
+    <input type="text" v-fbind:value='n'>
+    <br>
+    <button @click='n++'>n++</button>
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+           n:1 
+        },
+        directives:{
+            //big什么时候调用，1.指令与元素成功绑定时2.指令所在的模板被重新解析时
+            big(element,binding){
+                element.innerHTML = binding.value*10
+            },
+            fbind:{
+                //指令与元素成功绑定时
+                bind(element,binding){
+                    element.value=binding.value;
+                },
+                //指令所在元素被插入页面时
+                inserted(element,binding){
+                    element.focus()
+                },
+                //指令所在模板被重新解析时
+                update(element,binding){
+                    element.value=binding.value;
+                },
+            }
+        }
+    })
+</script>
+</html>
