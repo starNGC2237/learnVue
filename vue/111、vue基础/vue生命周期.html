@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <img src="../img/生命周期.png" alt=""> 
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+    const app=new Vue({
+        el:'#app',
+        data:{
+            
+        },
+        //发送ajax请求，启动计时器，绑定自定义事件，订阅信息等【初始化操作】
+        beforeCreate() {
+            console.log('beforeCreate')
+        },
+        created() {
+            console.log('created')
+        },
+        beforeMount() {
+            
+        },
+        mounted() {
+            
+        },
+        //在此处清除定时器，解绑自定义事件，取消订阅消息等。【收尾工作】
+        beforeDestroy() {
+            
+        },
+        destroyed() {
+            
+        },
+    })
+</script>
+</html>
