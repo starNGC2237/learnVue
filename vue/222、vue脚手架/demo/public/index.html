@@ -2,12 +2,17 @@
 <html lang="">
   <head>
     <meta charset="utf-8">
+    <!--针对于IE 8的一个特殊配置 用于让IE 以最高的渲染精度渲染页面-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--开启移动端的理想视口-->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--配置页签图标-->
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!--配置网页标题-->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <!--不支持js就会显示-->
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
