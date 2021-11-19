@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" >
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!--编写组件标签-->
+    <school></school>
+    <!--可以写做<school/>，但是只能在脚手架里这么写-->
+</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.config.devtools = true;
+
+    //创建组件
+    //也可以直接写配置对象
+    /**
+     * {
+        template:'<div><h2>学校位置：{{address}}</h2><h2>学校名称：{{schoolName}}</h2></div>',
+        data(){
+            return {
+                address:'昌平',
+                schoolName:'尚硅谷'
+            }
+        }
+    }
+     */
+    const school=Vue.extend({
+        template:'<div><h2>学校位置：{{address}}</h2><h2>学校名称：{{schoolName}}</h2></div>',
+        data(){
+            return {
+                address:'昌平',
+                schoolName:'尚硅谷'
+            }
+        }
+    })
+
+    const app=new Vue({
+        el:'#app',
+        //注册组件
+        components:{
+            school
+            //注册组件时
+            //school-address
+            //School
+            //SchoolAddress   只能在脚手架里这么写，不然报错
+        }
+    })
+</script>
+</html>

@@ -7,22 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-<div id="app">
-<!--第三步：编写组件标签-->
-    <hello></hello>
-    <school></school>
-    <student></student>
-    <student></student>
-</div>
-<!--第三步：编写组件标签-->
-<div id="app2">
-    <hello></hello>
+<div id="root">
+    <app></app>
 </div>
 </body>
 <script src="https://unpkg.com/vue"></script>
 <script>
     Vue.config.devtools = true;
-    
     //第一步，创建school组件
     const school=Vue.extend({
         template:'<div><h2>学校位置：{{address}}</h2><h2>学校名称：{{schoolName}}</h2></div>',
@@ -43,30 +34,19 @@
             }
         }
     })
-    //第一步，创建hello组件
-    const hello=Vue.extend({
-        template:'<h2>{{hello}}</h2>',
-        data(){
-            return {
-                hello:'你好！'
-            }
-        }
-    })
-    //第二步：注册组件（全局）
-    Vue.component('hello',hello)
-    new Vue({
-        el:'#app',
-        //第二步：注册组件（局部）
+    
+    //定义组件app
+    const app=Vue.extend({
+        template:'<div><school></school><student></student></div>',
         components:{
-            school:school,
-            student
+            student,
+            school
         }
     })
-    new Vue({
-        el:'#app2',
-        //第二步：注册组件
+    const vm=new Vue({
+        el:'#root',
+        //注册app
+        components:{app},
     })
-
-    //VueComponent组件实例对象和Vue实例对象的区别：不能写el，，，和data必须写成函数
 </script>
 </html>
