@@ -1,20 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" alt="">
-     <School></School>
-     <Student></Student>
+    <Top></Top>
+    <School></School>
+    <Bottom></Bottom>
   </div>
 </template>
 
 <script>
-import School from './components/School.vue';
-import Student from './components/Student.vue'
-export default {
-    name:'App',
-    components:{
-        Student,
-        School
-    }
-}
+  import Bottom from './components/Bottom.vue'
+  import Top from './components/Top.vue'
+  import School from './components/School.vue'
+  //import ColorfulCube from './components/ColorfulCube.vue'
+  export default {
+      name:'App',
+      components:{
+        School,
+        Top,
+        Bottom
+      }
+  }
 </script>
 
+<style>
+@import url(https://cdn.starlibrary.online/normalize.css);
+</style>

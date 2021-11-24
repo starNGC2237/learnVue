@@ -1,6 +1,6 @@
 <template>
     <div class='demo'>
-        <h2>学校位置：{{address}}</h2>
+        <h2 ref='h2'>学校位置：{{address}}</h2>
         <h2>学校名称：{{schoolName}}</h2>
     </div>
 </template>
