@@ -3,8 +3,8 @@
       <div class="todo-container">
         <div class="todo-wrap">
           <todo-header :getTodo='getTodo'></todo-header>
-          <todo-list :lists='lists' :getTodoIsOK='getTodoIsOK'></todo-list>
-          <todo-footer></todo-footer>
+          <todo-list :lists='lists' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-list>
+          <todo-footer :lists='lists' :getTodoAllSector='getTodoAllSector' :getTodoAllDelete='getTodoAllDelete'></todo-footer>
         </div>
       </div>
   </div>
@@ -40,6 +40,25 @@ export default {
     getTodoIsOK(id){
       this.lists.forEach((todoObj)=>{
         if(todoObj.id === id) todoObj.isOk=!todoObj.isOk
+      })
+    },
+    //接受子组件的id,并删除
+    getTodoDelete(id){
+      this.lists=this.lists.filter( (todoObj)=>{
+        return todoObj.id !== id;
+      }
+      )
+    },
+    //接受子组件isOk,全选or全不选
+    getTodoAllSector(isOk){
+      this.lists.forEach((todoObj)=>{
+        if(todoObj.isOk !=isOk) todoObj.isOk=isOk
+      })
+    },
+    //删除全部
+    getTodoAllDelete(){
+      this.lists=this.lists.filter((todoObj)=>{
+        return !todoObj.isOk
       })
     }
   }

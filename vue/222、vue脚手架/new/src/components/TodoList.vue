@@ -1,6 +1,6 @@
 <template>
     <ul class="todo-main">
-        <todo-item v-for="(item) in lists" :key="item.id" :text='item' :getTodoIsOK='getTodoIsOK'></todo-item>
+        <todo-item v-for="(item) in lists" :key="item.id" :text='item' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-item>
     </ul>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     components:{
         TodoItem
     },
-    props:['lists','getTodoIsOK']
+    props:['lists','getTodoIsOK','getTodoDelete']
 }
 </script>
 

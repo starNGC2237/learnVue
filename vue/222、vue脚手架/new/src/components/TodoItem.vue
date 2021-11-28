@@ -12,7 +12,7 @@
 <script>
 export default {
     name:'TodoItem',
-    props:["text",'getTodoIsOK'],
+    props:["text",'getTodoIsOK','getTodoDelete'],
     methods: {
         handleCheck(id){
             //通知app取反
@@ -21,7 +21,7 @@ export default {
         //通知app删除
         handleDelete(id){
             if(confirm('确认删除吗？')){
-                console.log(id)
+                this.getTodoDelete(id)
             }
         }
     },

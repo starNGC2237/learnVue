@@ -1,18 +1,54 @@
 <template>
-    <div class="todo-footer">
+    <div class="todo-footer" v-show="listsNumber">
         <label>
-            <input type="checkbox"/>
+            <input type="checkbox" v-model='isAll'/>
         </label>
         <span>
-            <span>已完成0</span> / 全部2
+            <span>已完成{{listsOkNumber}}</span> / 全部{{listsNumber}}
         </span>
-        <button class="btn btn-danger">清除已完成任务</button>
+        <button class="btn btn-danger" @click="deleteAll()">清除已完成任务</button>
     </div>
 </template>
 
 <script>
 export default {
-    name:'TodoFooter'
+    name:'TodoFooter',
+    props:['lists','getTodoAllSector','getTodoAllDelete'],
+    computed:{
+        isAll:{
+            set(value){
+                this.getTodoAllSector(value)
+            },
+            get(){
+                if(this.listsNumber>0){
+                    return (this.listsNumber-this.listsOkNumber===0)
+                }else{
+                    return false
+                }
+            }
+        },
+        listsNumber(){return this.lists.length},
+        listsOkNumber(){
+            /**
+             * var listsOkNumber=0
+            this.lists.forEach(todoObj => {
+                if(todoObj.isOk) listsOkNumber++
+            });
+            return listsOkNumber
+             */
+            
+            return this.lists.reduce((pre,todoObj)=>{
+
+                return pre + (todoObj.isOk ? 1:0)
+
+            },0)
+        }
+    },
+    methods:{
+        deleteAll(){
+            this.getTodoAllDelete()
+        }
+    }
 }
 </script>
 
