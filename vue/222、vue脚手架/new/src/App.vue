@@ -2,7 +2,8 @@
   <div id="app">
       <div class="todo-container">
         <div class="todo-wrap">
-          <todo-header :getTodo='getTodo'></todo-header>
+          <!--<todo-header :getTodo='getTodo'></todo-header>-->
+          <todo-header @getTodo='getTodo'></todo-header>
           <todo-list :lists='lists' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-list>
           <todo-footer :lists='lists' :getTodoAllSector='getTodoAllSector' :getTodoAllDelete='getTodoAllDelete'></todo-footer>
         </div>
@@ -19,11 +20,7 @@ export default {
   name: 'App',
   data(){
     return {
-      lists:[
-                {id:'001',thing:'吃饭',isOk:false},
-                {id:'002',thing:'睡觉',isOk:false},
-                {id:'003',thing:'打代码',isOk:true},
-            ]
+      lists:JSON.parse(window.localStorage.getItem('lists')) || []
     }
   },
   components: {
@@ -60,6 +57,14 @@ export default {
       this.lists=this.lists.filter((todoObj)=>{
         return !todoObj.isOk
       })
+    }
+  },
+  watch:{
+    lists:{
+      deep:true,
+      handler(value){
+        window.localStorage.setItem('lists',JSON.stringify(value))
+      },
     }
   }
 }

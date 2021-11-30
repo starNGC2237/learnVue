@@ -46,7 +46,9 @@ export default {
     },
     methods:{
         deleteAll(){
-            this.getTodoAllDelete()
+            if(confirm('确认删除吗？')){
+               this.getTodoAllDelete() 
+            }
         }
     }
 }

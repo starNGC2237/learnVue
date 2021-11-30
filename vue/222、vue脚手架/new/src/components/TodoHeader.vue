@@ -18,14 +18,13 @@ export default {
       sendTodo(){
         if(this.keyTodo!=''){
           const todoObj={id:nanoid(),thing:this.keyTodo,isOk:false}
-          this.getTodo(todoObj)
+          this.$emit('getTodo',todoObj)
           this.keyTodo=''
         }else{
           alert('请输入')
         }
       }
     },
-    props:['getTodo']
 }
 </script>
 
