@@ -5,7 +5,7 @@
           <!--<todo-header :getTodo='getTodo'></todo-header>-->
           <todo-header @getTodo='getTodo'></todo-header>
           <todo-list :lists='lists' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-list>
-          <todo-footer :lists='lists' :getTodoAllSector='getTodoAllSector' :getTodoAllDelete='getTodoAllDelete'></todo-footer>
+          <todo-footer :lists='lists' @getTodoAllSector='getTodoAllSector' @getTodoAllDelete='getTodoAllDelete'></todo-footer>
         </div>
       </div>
   </div>

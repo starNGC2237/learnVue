@@ -13,11 +13,11 @@
 <script>
 export default {
     name:'TodoFooter',
-    props:['lists','getTodoAllSector','getTodoAllDelete'],
+    props:['lists'],
     computed:{
         isAll:{
             set(value){
-                this.getTodoAllSector(value)
+                this.$emit('getTodoAllSector',value)
             },
             get(){
                 if(this.listsNumber>0){
@@ -47,7 +47,7 @@ export default {
     methods:{
         deleteAll(){
             if(confirm('确认删除吗？')){
-               this.getTodoAllDelete() 
+                this.$emit('getTodoAllDelete')
             }
         }
     }
