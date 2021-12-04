@@ -1,3 +1,11 @@
+<!--
+ * @Author: zhilutianji
+ * @Date: 2021-12-01 19:05:54
+ * @LastEditors: zhilutianji
+ * @LastEditTime: 2021-12-04 14:25:20
+ * @Description: file content
+ * @FilePath: \zongxian\src\App.vue
+-->
 <template>
   <div id="app">
     <h1>{{msg}}</h1>

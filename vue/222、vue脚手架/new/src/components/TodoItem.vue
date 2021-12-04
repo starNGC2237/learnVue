@@ -1,3 +1,11 @@
+<!--
+ * @Author: zhilutianji
+ * @Date: 2021-11-25 15:16:15
+ * @LastEditors: zhilutianji
+ * @LastEditTime: 2021-12-04 20:39:59
+ * @Description: file content
+ * @FilePath: \new\src\components\TodoItem.vue
+-->
 <template>
     <li>
         <label>
@@ -12,16 +20,16 @@
 <script>
 export default {
     name:'TodoItem',
-    props:["text",'getTodoIsOK','getTodoDelete'],
+    props:["text"],
     methods: {
         handleCheck(id){
             //通知app取反
-            this.getTodoIsOK(id)
+            this.$bus.$emit('getTodoIsOK',id)
         },
         //通知app删除
         handleDelete(id){
             if(confirm('确认删除吗？')){
-                this.getTodoDelete(id)
+                this.$bus.$emit('getTodoDelete',id)
             }
         }
     },

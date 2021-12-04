@@ -59,6 +59,14 @@ export default {
       })
     }
   },
+  mounted(){
+    this.$bus.$on('getTodoIsOK',this.getTodoIsOK)
+    this.$bus.$on('getTodoDelete',this.getTodoDelete)
+  },
+  beforeDestroy(){
+    this.$bus.$off('getTodoIsOK')
+    this.$bus.$off('getTodoDelete')
+  },
   watch:{
     lists:{
       deep:true,
