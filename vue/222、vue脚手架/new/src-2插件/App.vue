@@ -1,3 +1,12 @@
+<!--
+ * @Author: zhilutianji
+ * @Date: 2021-11-24 16:22:14
+ * @LastEditors: zhilutianji
+ * @LastEditTime: 2021-12-04 12:53:52
+ * @Description: file content
+ * @FilePath: \new\src-2插件\App.vue
+-->
+
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
