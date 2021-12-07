@@ -39,6 +39,12 @@ export default {
         if(todoObj.id === id) todoObj.isOk=!todoObj.isOk
       })
     },
+    //更新一个todo都title
+    updateTodo(id,thing){
+      this.lists.forEach((todoObj)=>{
+        if(todoObj.id === id) todoObj.thing=thing
+      })
+    },
     //接受子组件的id,并删除
     getTodoDelete(id){
       this.lists=this.lists.filter( (todoObj)=>{
@@ -62,10 +68,12 @@ export default {
   mounted(){
     this.$bus.$on('getTodoIsOK',this.getTodoIsOK)
     this.$bus.$on('getTodoDelete',this.getTodoDelete)
+    this.$bus.$on('updateTodo',this.updateTodo)
   },
   beforeDestroy(){
     this.$bus.$off('getTodoIsOK')
     this.$bus.$off('getTodoDelete')
+    this.$bus.$off('updateTodo')
   },
   watch:{
     lists:{
@@ -105,18 +113,22 @@ export default {
     border-radius: 4px;
   }
 
-    .btn-danger {
-        color: #fff;
-        background-color: #da4f49;
-        border: 1px solid #bd362f;
-    }
-
-    .btn-danger:hover {
-        color: #fff;
-        background-color: #bd362f;
-    }
-
-    .btn:focus {
-        outline: none;
-    }
+  .btn-danger {
+      color: #fff;
+      background-color: #da4f49;
+      border: 1px solid #bd362f;
+  }
+  .btn-edit {
+      color: #fff;
+      background-color: skyblue;
+      border: 1px solid rgb(193, 224, 236);
+      margin-right: 5px;
+  }
+  .btn-danger:hover {
+      color: #fff;
+      background-color: #bd362f;
+  }
+  .btn:focus {
+      outline: none;
+  }
 </style>

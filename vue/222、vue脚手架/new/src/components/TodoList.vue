@@ -1,6 +1,14 @@
+<!--
+ * @Author: zhilutianji
+ * @Date: 2021-11-25 15:17:19
+ * @LastEditors: zhilutianji
+ * @LastEditTime: 2021-12-06 20:21:24
+ * @Description: file content
+ * @FilePath: \new\src\components\TodoList.vue
+-->
 <template>
     <ul class="todo-main">
-        <todo-item v-for="(item) in lists" :key="item.id" :text='item' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-item>
+        <todo-item v-for="(item) in lists" :key="item.id" :todo='item' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-item>
     </ul>
 </template>
 

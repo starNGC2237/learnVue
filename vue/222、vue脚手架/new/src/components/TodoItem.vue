@@ -2,25 +2,27 @@
  * @Author: zhilutianji
  * @Date: 2021-11-25 15:16:15
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-04 20:39:59
+ * @LastEditTime: 2021-12-06 21:12:42
  * @Description: file content
  * @FilePath: \new\src\components\TodoItem.vue
 -->
 <template>
     <li>
         <label>
-          <input type="checkbox" :checked="text.isOk" @change="handleCheck(text.id)"/>
+          <input type="checkbox" :checked="todo.isOk" @change="handleCheck(todo.id)"/>
           <!--可以使用v-model，但是不推荐-->
-          <span>{{text.thing}}</span>
+          <span v-show="!todo.isEdit">{{todo.thing}}</span>
+          <input v-show="todo.isEdit" type="text" :value="todo.thing" @blur="handleBlur(todo,$event)">
         </label>
-        <button class="btn btn-danger" @click="handleDelete(text.id)">删除</button>
+        <button  class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
+        <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">编辑</button>
     </li>
 </template>
 
 <script>
 export default {
     name:'TodoItem',
-    props:["text"],
+    props:["todo"],
     methods: {
         handleCheck(id){
             //通知app取反
@@ -31,6 +33,23 @@ export default {
             if(confirm('确认删除吗？')){
                 this.$bus.$emit('getTodoDelete',id)
             }
+        },
+        //通知app正在编辑
+        handleEdit(todo){
+            if(Object.prototype.hasOwnProperty.call(todo,'isEdit')){
+                todo.isEdit = true
+            }else{
+                this.$set(todo,'isEdit',true)
+            }
+        },
+        handleBlur(todo,e){
+            todo.isEdit = false
+            if(!e.target.value.trim()){
+                return alert('不能为空')
+            }else{
+                this.$bus.$emit('updateTodo',todo.id,e.target.value)
+            }
+           
         }
     },
 }
