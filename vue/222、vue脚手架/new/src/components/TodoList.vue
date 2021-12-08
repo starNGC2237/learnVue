@@ -2,13 +2,15 @@
  * @Author: zhilutianji
  * @Date: 2021-11-25 15:17:19
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-06 20:21:24
+ * @LastEditTime: 2021-12-08 16:33:24
  * @Description: file content
  * @FilePath: \new\src\components\TodoList.vue
 -->
 <template>
     <ul class="todo-main">
-        <todo-item v-for="(item) in lists" :key="item.id" :todo='item' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-item>
+        <transition-group name="todo" appear>
+            <todo-item v-for="(item) in lists" :key="item.id" :todo='item' :getTodoIsOK='getTodoIsOK' :getTodoDelete='getTodoDelete'></todo-item>
+        </transition-group>
     </ul>
 </template>
 
@@ -40,6 +42,19 @@ export default {
     padding-left: 5px;
     margin-top: 10px;
     }
-    
-
+    .todo-enter-active{
+        animation: todoAnimation 0.8s linear reverse;
+    }
+    .todo-leave-active{
+        animation: todoAnimation 0.8s linear;
+    }
+    /*动画 */
+    @keyframes todoAnimation {
+        from{
+            transform: translateX(0px);
+        }
+        to{
+            transform: translateX(100%);
+        }
+    }
 </style>>

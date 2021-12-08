@@ -2,7 +2,7 @@
  * @Author: zhilutianji
  * @Date: 2021-11-25 15:16:15
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-06 21:12:42
+ * @LastEditTime: 2021-12-08 16:31:42
  * @Description: file content
  * @FilePath: \new\src\components\TodoItem.vue
 -->
@@ -12,7 +12,7 @@
           <input type="checkbox" :checked="todo.isOk" @change="handleCheck(todo.id)"/>
           <!--可以使用v-model，但是不推荐-->
           <span v-show="!todo.isEdit">{{todo.thing}}</span>
-          <input v-show="todo.isEdit" type="text" :value="todo.thing" @blur="handleBlur(todo,$event)">
+          <input ref="todoThing" v-show="todo.isEdit" type="text" :value="todo.thing" @blur="handleBlu(todo,   $event)">
         </label>
         <button  class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
         <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">编辑</button>
@@ -41,6 +41,10 @@ export default {
             }else{
                 this.$set(todo,'isEdit',true)
             }
+            //nextTick为在下一次dom更新后执行其指定的回调
+            this.$nextTick(function(){
+                this.$refs.todoThing.focus()
+            })
         },
         handleBlur(todo,e){
             todo.isEdit = false
@@ -96,4 +100,5 @@ export default {
     li:hover button{
         display: block;
     }
+   
 </style>>
