@@ -1,17 +1,27 @@
+<!--
+ * @Author: zhilutianji
+ * @Date: 2021-12-08 20:28:39
+ * @LastEditors: zhilutianji
+ * @LastEditTime: 2021-12-08 20:39:36
+ * @Description: file content
+ * @FilePath: \github\src\App.vue
+-->
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Search/>
+    <List/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Search from './components/Search.vue'
+import List from './components/List.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Search,
+    List
   }
 }
 </script>
