@@ -2,7 +2,7 @@
  * @Author: zhilutianji
  * @Date: 2021-12-14 19:55:28
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-20 15:16:00
+ * @LastEditTime: 2021-12-20 18:13:25
  * @Description: file content
  * @FilePath: \count_vuex\src\components\Count.vue
 -->
@@ -11,6 +11,7 @@
     <h1>当前求和为{{sum}}</h1>
     <h2>当前10倍求和为{{bigSum}}</h2>
     <h2>我在{{school}}学习，学习{{subject}}</h2>
+    <h2>下面组件的人数为{{personList.length}}</h2>
     <select v-model="n">
       <!--或者使用v-model.number-->
       <option :value="1">1</option>
@@ -46,9 +47,9 @@ export default {
     },
      */
     //对象写法
-    ...mapMutations({increase:'JIA',decrease:'JIAN'}),
+    ...mapMutations('countAbout',{increase:'JIA',decrease:'JIAN'}),
     //数组写法需要一样
-    ...mapActions({increaseOdd:'odd',increaseWait:'wait'})
+    ...mapActions('countAbout',{increaseOdd:'odd',increaseWait:'wait'})
     //数组写法需要一样
     //如果需要简洁，则需要
     /**
@@ -61,11 +62,12 @@ export default {
     //对象写法
     //...mapState({school:'school',subject:'subject'})
     //数组写法
-    ...mapState(['school','subject','sum']),
+    ...mapState('countAbout',['school','subject','sum']),
+    ...mapState('personAbout',['personList']),
     //对象写法
     //...mapGetters({bigSum:'bigSum'})
     //数组写法
-    ...mapGetters(['bigSum'])
+    ...mapGetters('countAbout',['bigSum'])
   }
 };
 </script>
