@@ -2,7 +2,7 @@
  * @Author: zhilutianji
  * @Date: 2021-12-21 00:16:23
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-21 23:15:45
+ * @LastEditTime: 2021-12-21 22:43:56
  * @Description: file content
  * @FilePath: \vue_router_demo\src\router\index.js
  */
@@ -42,8 +42,8 @@ const router = new VueRouter({
                             //使用props传数据第一种方法
                             //props:true,
                             //如果为真，就会把该路由组件收到的所有params参数，以props的形式传给Detail组件
-                            props($router){
-                                return {id:$router.query.id,title:$router.query.title}
+                            props(query){
+                                return {id:query.id,title:query.title}
                             },
                             component:Detail
                         }

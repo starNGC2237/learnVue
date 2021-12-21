@@ -2,7 +2,7 @@
  * @Author: zhilutianji
  * @Date: 2021-12-20 23:26:59
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-21 23:04:42
+ * @LastEditTime: 2021-12-21 22:54:03
  * @Description: file content
  * @FilePath: \vue_router_demo\src\App.vue
 -->
@@ -22,7 +22,6 @@
           <!--使用replace 替换模式-->
           <router-link replace class="list-group-item" active-class="active" to="/about">About</router-link>
           <router-link replace class="list-group-item" active-class="active" to="./home">Home</router-link>
-          
         </div>
       </div>
       <div class="col-xs-6">
