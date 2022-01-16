@@ -14,7 +14,6 @@ const countOptions = {
             if(context.state.sum%2){
                 context.commit('ODD',value)
             }
-            
         },
         wait:function(context,value){
             setTimeout(() => {
