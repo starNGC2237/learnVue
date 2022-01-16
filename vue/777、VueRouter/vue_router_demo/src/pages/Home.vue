@@ -2,7 +2,7 @@
  * @Author: zhilutianji
  * @Date: 2021-12-20 23:39:08
  * @LastEditors: zhilutianji
- * @LastEditTime: 2021-12-21 13:40:19
+ * @LastEditTime: 2021-12-23 16:21:50
  * @Description: file content
  * @FilePath: \vue_router_demo\src\pages\Home.vue
 -->
@@ -12,13 +12,26 @@
     <div>
       <ul class="nav nav-tabs">
         <li>
-          <router-link class="list-group-item" active-class="active" to="/home/news">News</router-link>
+          <router-link
+            class="list-group-item"
+            active-class="active"
+            to="/home/news"
+            >News</router-link
+          >
         </li>
         <li>
-          <router-link class="list-group-item" active-class="active" to="/home/message">Message</router-link>
+          <router-link
+            class="list-group-item"
+            active-class="active"
+            to="/home/message"
+            >Message</router-link
+          >
         </li>
       </ul>
-      <router-view></router-view>
+      <keep-alive :include="['Message','News']">
+        <!--多个使用数组-->
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
